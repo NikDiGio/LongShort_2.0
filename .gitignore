@@ -1,0 +1,18 @@
+git-lfs-3.4.0/
+Model/
+ToolsContainer/Data_Combination.py
+ToolsContainer/data_for_regression_task.py
+ToolsContainer/evaluation.py
+ToolsContainer/financial_phrasebank_download.py
+ToolsContainer/preprocess_ENR.py
+ToolsContainer/tag
+ToolsContainer/tag2
+ToolsContainer/WS_datacl.py
+main2.pdf
+Note su git
+vocabulary_with_indices
+Datasets/Input/glove.6B/
+Datasets/Input/glove.6B/glove.6B.300d.txt
+GPU_Server_Run/Output/CNN/vocabulary_*/
+GPU_Server_Run/Input_Data/glove.6B/glove.6B.300d.txt
+venv/

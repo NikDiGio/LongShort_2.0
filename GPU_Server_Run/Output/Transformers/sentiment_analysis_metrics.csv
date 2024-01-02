@@ -1,0 +1,7 @@
+Model Name,Confusion Matrix,Precision,Recall
+distilbert-base-uncased,"[[274   9  43]
+ [ 13 525  48]
+ [ 44  52 535]]",0.864549578742709,0.864549578742709
+yiyanghkust/finbert-tone,"[[263  25  38]
+ [ 11 521  54]
+ [ 75  88 468]]",0.8114063512637719,0.8114063512637719

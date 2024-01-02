@@ -1,0 +1,4 @@
+,distilbert-base-uncased,yiyanghkust/finbert-tone
+Accuracy,1.0,1.0
+F1,1.0,1.0
+ExecTime(sec),195.9258897304535,368.5415518283844

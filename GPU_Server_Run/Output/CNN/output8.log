@@ -1,0 +1,148 @@
+nohup: ignoring input
+/home/tesi/digiova/./CNN_classif_task_gensim_pretrained.py:54: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:261.)
+  sequence = torch.tensor(sequence, dtype=torch.float32) # sequences are np.arrays so conversion in torch.tensor is needed
+2023-11-16 16:11:32.676213: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2023-11-16 16:11:32.677150: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: abacus.dmf.bs.unicatt.it
+2023-11-16 16:11:32.677630: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: abacus.dmf.bs.unicatt.it
+2023-11-16 16:11:32.678112: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 495.29.5
+2023-11-16 16:11:32.678498: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 495.29.5
+2023-11-16 16:11:32.678841: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 495.29.5
+2023-11-16 16:11:32.679739: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+0       </s></s></s></s></s></s></s></s></s></s></s></...
+1       </s></s></s></s></s></s></s></s></s></s></s></...
+2       </s></s></s></s></s></s></s></s></s></s></s></...
+3       </s></s></s></s></s></s></s></s></s></s></s></...
+4       </s></s></s></s></s></s></s></s></s></s></s></...
+                              ...                        
+4839    </s></s></s></s></s></s></s></s></s></s></s></...
+4840    </s></s></s></s></s></s></s></s></s></s></s></...
+4841    </s></s></s></s></s></s></s></s></s></s></s></...
+4842    </s></s></s></s></s></s></s></s></s></s></s></...
+4843    </s></s></s></s></s></s></s></s></s></s></s></...
+Name: sentence, Length: 4844, dtype: object
+0       according gran the company no plan move produc...
+1       technopolis plan develop stag area no less 100...
+2       the international electronic industry company ...
+3       with new production plant company would increa...
+4       according the company s update strategy the ye...
+                              ...                        
+4839    operating result the 12month period decrease t...
+4840    helsinki thomson financial  shares cargotec fe...
+4841    london marketwatch  share price end lower lond...
+4842    rinkuskiai s beer sales fell 65 per cent 416 m...
+4843    operating profit fell eur 354 mn eur 688 mn 20...
+Name: sentence, Length: 4844, dtype: object
+The 'sentence' column has 0 empty cells.
+Test size  968
+Train size  3876
+Val size  581
+4797    the steelmaker say the drop profit explain the...
+4130    the challenge the company however be find new ...
+1932    today orange scissor the iconic symbol the exc...
+2615    the contract include heat plant equipment asso...
+1377    the endtoend delivery combine competencies ser...
+                              ...                        
+883     speaking justdrinks today a spokesperson olvi ...
+1078    teliasonera the lead telecommunications compan...
+3622      in addition the company reduce maximum ten job 
+3118    service supplier efore plc streamline operatio...
+2362    a meet the media analysts be hold the day 1030...
+Name: sentence, Length: 3293, dtype: object
+3293
+Fine tuning  8158
+Pre trained  400000
+Token: irritations at index (12, 88119) has a valid ID.
+Left-padded sequences_X_train shape:  torch.Size([3293, 300, 300])
+Left-padded sequences_X_val shape:  torch.Size([582, 300, 300])
+Left-padded sequences_X_test shape:  torch.Size([969, 300, 300])
+embedded_sequences_X_train shape:  (3293, 300, 300)
+embedded_sequences_X_test shape:  (969, 300, 300)
+embedded_sequences_X_val shape:  (582, 300, 300)
+reshaped_embedded_sequences_X_train shape:  (3293, 90000)
+reshaped_embedded_sequences_X_test shape:  (969, 90000)
+reshaped_embedded_sequences_X_val shape:  (582, 90000)
+(None, 89998, 128)
+(None, 89997, 128)
+(None, 89996, 128)
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 90000)]      0           []                               
+                                                                                                  
+ embedding (Embedding)          (None, 90000, 300)   120533700   ['input_1[0][0]']                
+                                                                                                  
+ conv1d (Conv1D)                (None, 89998, 128)   115328      ['embedding[0][0]']              
+                                                                                                  
+ conv1d_1 (Conv1D)              (None, 89997, 128)   153728      ['embedding[0][0]']              
+                                                                                                  
+ conv1d_2 (Conv1D)              (None, 89996, 128)   192128      ['embedding[0][0]']              
+                                                                                                  
+ max_pooling1d (MaxPooling1D)   (None, 2092, 128)    0           ['conv1d[0][0]']                 
+                                                                                                  
+ max_pooling1d_1 (MaxPooling1D)  (None, 2092, 128)   0           ['conv1d_1[0][0]']               
+                                                                                                  
+ max_pooling1d_2 (MaxPooling1D)  (None, 2092, 128)   0           ['conv1d_2[0][0]']               
+                                                                                                  
+ concatenate (Concatenate)      (None, 2092, 384)    0           ['max_pooling1d[0][0]',          
+                                                                  'max_pooling1d_1[0][0]',        
+                                                                  'max_pooling1d_2[0][0]']        
+                                                                                                  
+ flatten (Flatten)              (None, 803328)       0           ['concatenate[0][0]']            
+                                                                                                  
+ dense (Dense)                  (None, 64)           51413056    ['flatten[0][0]']                
+                                                                                                  
+ dense_1 (Dense)                (None, 3)            195         ['dense[0][0]']                  
+                                                                                                  
+==================================================================================================
+Total params: 172,408,135
+Trainable params: 172,408,135
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Epoch 1/50
+Traceback (most recent call last):
+  File "/home/tesi/digiova/./CNN_classif_task_gensim_pretrained.py", line 448, in <module>
+    history = model_cnn.fit(reshaped_embedded_sequences_X_train, Y_train, validation_data=(reshaped_embedded_sequences_X_val, Y_val), epochs=num_epochs, batch_size=batch_size, callbacks=[early_stopping])
+  File "/usr/local/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/usr/local/lib64/python3.10/site-packages/tensorflow/python/eager/execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Graph execution error:
+
+Detected at node 'model/embedding/embedding_lookup' defined at (most recent call last):
+    File "/home/tesi/digiova/./CNN_classif_task_gensim_pretrained.py", line 448, in <module>
+      history = model_cnn.fit(reshaped_embedded_sequences_X_train, Y_train, validation_data=(reshaped_embedded_sequences_X_val, Y_val), epochs=num_epochs, batch_size=batch_size, callbacks=[early_stopping])
+    File "/usr/local/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+      return fn(*args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/training.py", line 1384, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/training.py", line 1021, in train_function
+      return step_function(self, iterator)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/training.py", line 1010, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/training.py", line 1000, in run_step
+      outputs = model.train_step(data)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/training.py", line 859, in train_step
+      y_pred = self(x, training=True)
+    File "/usr/local/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+      return fn(*args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/base_layer.py", line 1096, in __call__
+      outputs = call_fn(inputs, *args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 92, in error_handler
+      return fn(*args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/functional.py", line 451, in call
+      return self._run_internal_graph(
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/functional.py", line 589, in _run_internal_graph
+      outputs = node.layer(*args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+      return fn(*args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/engine/base_layer.py", line 1096, in __call__
+      outputs = call_fn(inputs, *args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 92, in error_handler
+      return fn(*args, **kwargs)
+    File "/usr/local/lib/python3.10/site-packages/keras/layers/embeddings.py", line 197, in call
+      out = tf.nn.embedding_lookup(self.embeddings, inputs)
+Node: 'model/embedding/embedding_lookup'
+indices[1,87304] = -1 is not in [0, 401779)
+	 [[{{node model/embedding/embedding_lookup}}]] [Op:__inference_train_function_1153]
