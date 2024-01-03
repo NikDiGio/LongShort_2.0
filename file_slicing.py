@@ -2,13 +2,13 @@ import os
 
 # GitHub's file size limit is 100 MB for individual files
 # but the Glove.6B dataset used to pre-train the Word2Vec model is around 1GB (10x capacity)
+# so the original txt file is sliced into many chunks to work around it
 
 path = os.getcwd()
 file_path = path + f'/Datasets/Input/glove.6B/'
 output_path = path + f'/GPU_Server_Run/Input_Data/glove.6B/'
 
-if os.path.exists(output_path) and not any(file.startswith('glove.6B.300d') for file in os.listdir(output_path)): # process must be repeate just once
-    # chunk_size = 50000000  # 50MB chunk size to stay well below GitHub cap size
+if os.path.exists(output_path) and not any(file.startswith('glove.6B.300d') for file in os.listdir(output_path)): # process must be repeated just once
     n_chunks = 15
     file_number = 1
 

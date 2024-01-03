@@ -16,3 +16,4 @@ Datasets/Input/glove.6B/glove.6B.300d.txt
 GPU_Server_Run/Output/CNN/vocabulary_*/
 GPU_Server_Run/Input_Data/glove.6B/glove.6B.300d.txt
 venv/
+.DS_Store
